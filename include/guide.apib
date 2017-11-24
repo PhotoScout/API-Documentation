@@ -5,7 +5,7 @@
 + Parameters
 
     + page: `2` (optional, integer)
-        + Default: `1`
+        + Default: `0`
     + per_page: `20` (optional, integer) - Number of guides to return.
         + Default: `10`
 
@@ -25,7 +25,7 @@ Users can choose to share their guides with the community, such guides are publi
 + Parameters
 
     + page: `2` (optional, integer)
-        + Default: `1`
+        + Default: `0`
     + per_page: `20` (optional, integer) - Number of guides to return.
         + Default: `10`
 
@@ -61,6 +61,8 @@ This entrypoint is used to create a new guide. The newly created guide will be l
 
 All the guide values are empty, except the title which must be provided, and the creation and last edition date that are set to `now()`.
 
+The `title` field cannot be empty. Space only strings will also be rejected.
+
 + Request (application/json)
     + Body
 
@@ -79,6 +81,8 @@ Fields can be emptied to sending a empty string `""`, however the title cannot b
 
 The `fetured-photo` field takes for arguments the ID of one the photos already in the guide. Failing to provide one will lead to a *400* error.
 
+The `title` field cannot be emptied. Space only strings will also be rejected.
+
 + Request (application/json)
     + Body
 
@@ -86,7 +90,7 @@ The `fetured-photo` field takes for arguments the ID of one the photos already i
                 "guide_id": 0,
                 "guide_info": {
                     "title": "Example guide",
-                    "featured-photo": 0,
+                    "featured_photo": 0,
                     "visibility": false,
                     "location": {
                         "latitude": -17.685895,
